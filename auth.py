@@ -23,7 +23,7 @@ def register():
         elif not password:
             error = 'Password is required.'
         elif db.execute(
-            'SELECT id FROM user WHEERE username=?', (username,)
+            'SELECT id FROM user WHERE username=?', (username,)
         ).fetchone() is not None:
             error = 'User {} is already registered.'.format(username)
 
@@ -39,7 +39,7 @@ def register():
     return render_template('auth/register.html')
 
 
-@bp.route('/login', methods=('GET','POST'))
+@bp.route('/login', methods=('GET', 'POST'))
 def login():
     if request.method == 'POST':
         username = request.form['username']
